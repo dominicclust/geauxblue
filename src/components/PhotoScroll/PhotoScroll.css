@@ -1,0 +1,13 @@
+div {
+    position: absolute;
+    top: 10vh;
+    max-height: 10vh;
+
+
+
+}
+img {
+    width: auto;
+    transform:translateX(-100%);
+    transition: position 2s ease 4s;
+}
