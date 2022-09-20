@@ -1,0 +1,8 @@
+#everything {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction:column;
+}

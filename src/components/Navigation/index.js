@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import './Navigation.css'
 
 export const Navigation = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -11,7 +12,6 @@ export const Navigation = () => {
 
     useEffect(() => {
         if (!showMenu) return;
-
         const closeMenu = () => {
             setShowMenu(false);
         };
@@ -19,25 +19,33 @@ export const Navigation = () => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+        }, [showMenu]);
+
 
     return (
-        <>
-            <i className="fa-duotone fa-bars" onClick={()=> openMenu()}></i>
+        <div id="container" onClick={()=>openMenu()}>
+            <i className="fa-solid fa-bars" />
             {showMenu && (
-                <ul>
-                    <li>
-                        <NavLink to='/whoweare'>
-                            Who We Are
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/howtogeauxblue'>
-                            How You Can Go Blue
-                        </NavLink>
-                    </li>
-                </ul>
+                <div id='menu' style={{'display': showMenu === true ? 'flex' : 'none'}}>
+                    <ul>
+                        <li>
+                            <NavLink to='/' end>
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/whoweare' >
+                                Who We Are
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/howtogeauxblue' replace>
+                                How You Can Go Blue
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
             )}
-        </>
+        </div>
     )
 }

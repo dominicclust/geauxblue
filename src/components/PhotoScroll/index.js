@@ -1,25 +1,53 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, createRef} from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import uuid from 'uuid'
 import './PhotoScroll.css'
 
-export const PhotoScroll = ({pics}) => {
-    const [oldPic, setOldPic] = useState(pics[0])
-    const [newPic, setNewPic] = useState(pics[1])
-    const [count, setCount] = useState(0)
-    useEffect(()=> {
-        const updatePic = () => {
-            setNewPic(pics[count+1])
-            setOldPic(pics[count])
-        }
-        setCount(count + 1)
-        if (count === pics.length) setCount(0);
-        document.addEventListener('transitionend', updatePic)
-        return () => document.removeEventListener('transitionend', updatePic)
-    }, [oldPic, newPic, count])
+export const PhotoScroll = ({picArray}) => {
+    const [firstPic, setFirstPic] = useState(picArray[0])
+    const [secondPic, setSecondPic] = useState(picArray[1])
+    const [thirdPic, setThirdpic] = useState(picArray[2])
 
+    const pics = [{
+        id: uuid(),
+        imgSrc: firstPic.imgSrc,
+        imgAlt: firstPic.imgAlt,
+        nodeRef: createRef(null)
+    }, {
+        id: uuid(),
+        imgSrc: secondPic.imgSrc,
+        imgAlt: secondPic.imgAlt,
+        nodeRef: createRef(null)
+    }, {
+        id: uuid(),
+        imgSrc: thirdPic.imgSrc,
+        imgAlt: thirdPic.imgAlt,
+        nodeRef: createRef(null)
+    }]
+    const changePic = (pic, setPic) => {
+        let i = picArray.indexOf(pic);
+        setTimeout(() => {
+            i += 3;
+            i >= picArray.length
+                ? i -= picArray.length
+                : i += 0
+            setPic(picArray[i])
+        }, 5000, i)
+    }
     return (
         <div>
-            <img className='oldPic' src={oldPic.imgSrc} alt={oldPic.imgAlt} ></img>
-            <img className='newPic' src={newPic.imgSrc} alt={newPic.imgAlt} ></img>
+            <TransitionGroup className='imageScroll'>
+                {pics.map(({id, imgSrc, imgAlt, nodeRef}) => {
+                    return (
+                        <CSSTransition
+                            key={id}
+                            nodeRef={nodeRef}
+                            timeout={7000}
+                            classNames="current"
+            ></CSSTransition>
+                    )
+                })}
+            </TransitionGroup>
         </div>
     )
 
