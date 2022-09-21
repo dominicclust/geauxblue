@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import './Navigation.css'
+import { Link } from "react-router-dom";
+import '../../App.css'
 
-export const Navigation = () => {
+const Navigation = () => {
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -23,25 +23,27 @@ export const Navigation = () => {
 
 
     return (
-        <div id="container" onClick={()=>openMenu()}>
-            <i className="fa-solid fa-bars" />
+        <div className='nav'>
+            {showMenu===false && (
+                <i className="fa-solid fa-bars" onClick={()=>openMenu()}></i>
+            )}
             {showMenu && (
-                <div id='menu' style={{'display': showMenu === true ? 'flex' : 'none'}}>
+                <div id='menu'>
                     <ul>
                         <li>
-                            <NavLink to='/' end>
+                            <Link to='/' end>
                                 Home
-                            </NavLink>
+                            </Link>
                         </li>
                         <li>
-                            <NavLink to='/whoweare' >
+                            <Link to='whoweare'>
                                 Who We Are
-                            </NavLink>
+                            </Link>
                         </li>
                         <li>
-                            <NavLink to='/howtogeauxblue' replace>
+                            <Link to='howtogeauxblue'>
                                 How You Can Go Blue
-                            </NavLink>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -49,3 +51,4 @@ export const Navigation = () => {
         </div>
     )
 }
+export default Navigation

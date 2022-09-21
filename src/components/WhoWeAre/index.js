@@ -1,8 +1,9 @@
 import React from "react";
+import "../../App.css";
 
-export const WhoWeAre = () => {
+const WhoWeAre = () => {
     return (
-        <div>
+        <div className="main">
             <h1>Who We Are</h1>
             <p>
                 Geaux Blue NOLA was first established in 2016 in response to tragic and senseless attacks against
@@ -28,3 +29,4 @@ export const WhoWeAre = () => {
         </div>
     )
 }
+export default WhoWeAre;

@@ -1,6 +1,8 @@
-export const HowToGeauxBlue = () => {
+import React from "react"
+import "../../App.css"
+const HowToGeauxBlue = () => {
     return (
-        <>
+        <div className='main'>
             <h1>How YOU Can Geaux Blue</h1>
             <div>
                 <blockquote>
@@ -64,7 +66,8 @@ export const HowToGeauxBlue = () => {
                 </p>
             </div>
 
-        </>
+        </div>
 
     )
 }
+export default HowToGeauxBlue

@@ -1,10 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import '../../App.css'
 export default function Home () {
     return (
-        <div>
-            <h1>Home Page!</h1>
-            <Outlet />
+        <div className='main'>
+            <h1>We're back!</h1>
+            <p style={{'fontSize': '1.5rem'}}>
+                Geaux Blue is back for 2022!
+            </p>
         </div>
     )
 }
