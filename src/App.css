@@ -5,11 +5,11 @@
     background-color: #222222;
     color: white;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 12.5%;
-    grid-template-rows: auto;
+    grid-template-columns: 30vw 30vw 30vw 12.5vw;
+    grid-template-rows: 10vh 25vh 60vh;
     grid-template-areas:
         'header header header nav'
-        'photos1 photos2 photos3 nav'
+        'photos photos photos nav'
         'main main main nav';
     margin: 0;
 }
@@ -19,59 +19,54 @@
     display: flex;
     align-items: center;
     font-size: x-large;
-    height: 12.5vh;
+    height: 10vh;
     width: 90vw;
 }
 #photoScroll {
+    background-color: black;
+    grid-area: photos;
     display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: space-around;
+}
+#first,
+#second,
+#third {
+    display: flex;
+    max-width: 30vw;
+    max-height: 25vh;
 }
 #first {
-    grid-area: photos1;
-    position: fixed;
-    left: 0;
-    top: 12.5vh;
-    width: 30vw;
-    height: 25vh;
+    justify-content: center;
+    align-items: flex-end;
 }
 #second {
-    grid-area: photos2;
-    position: fixed;
-    left: 30vw;
-    top: 12.5vh;
-    width: 30vw;
-    height: 25vh;
+    justify-content: center;
+    align-items: center;
 }
 #third {
-    grid-area: photos3;
-    position: fixed;
-    left: 60vw;
-    top: 12.5vh;
-    width: 30vw;
-    height: 25vh;
+    justify-content: center;
+    align-items: center;
 }
-#first>.active,
-#first>.onDeck {
-    position: absolute;
-    top:0;
-}
-
 #logo {
     height: 10vh;
 }
-#first > img,
-#second > img,
-#third > img {
-    box-sizing: content-box;
+.active {
+    position: absolute;
     max-width: 30vw;
-    max-height: 25vw;
-    justify-self: stretch;
-    align-self: stretch;
-
+    max-height: 25vh;
 }
+.onDeck {
+    position: absolute;
+    max-width: 30vw;
+    max-height: 25vh;
+}
+
 .main {
     grid-area: main;
-    width: 90%;
-    height: 60%;
+    width: 90vw;
+    height: 65vh;
     color: white;
 
 }
@@ -87,11 +82,11 @@
 }
 .active {
     opacity: 1;
-    animation: fade-out 2s linear 7s 1 normal backwards;
+    animation: fade-out 3s linear 5s 1 normal forwards;
 }
 .onDeck {
     opacity: 0;
-    animation: fade-in 2s linear 7s 1 normal forwards;
+    animation: fade-in 3s linear 5s 1 normal forwards;
 }
 @keyframes fade-out {
     0% {

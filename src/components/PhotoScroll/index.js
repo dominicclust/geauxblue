@@ -10,7 +10,10 @@ const PhotoScroll = ({picArray}) => {
     const [incoming, setIncoming] = useState(false)
     useEffect(() => {
         let imgSrcs = picArray.map(img => img.imgSrc)
-
+        const update = () => {
+            setOutgoing(true)
+            setIncoming(true)
+        }
         const changePics = (pics) => {
             return pics.map(pic => {
                 let idx = imgSrcs.indexOf(pic.imgSrc);
@@ -22,8 +25,7 @@ const PhotoScroll = ({picArray}) => {
         if (incoming === false) {
             setPics(changePics(pics))
             setOnDecks(changePics(onDecks))
-            setOutgoing(true)
-            setIncoming(true)
+            update()
         }
     }, [pics, onDecks, incoming, outgoing, picArray])
     return (
