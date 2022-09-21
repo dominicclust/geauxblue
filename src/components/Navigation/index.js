@@ -1,51 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useTransition, startTransition } from "react";
 import { Link } from "react-router-dom";
 import '../../App.css'
 
 const Navigation = () => {
     const [showMenu, setShowMenu] = useState(false);
+    const [width, setWidth] = useState('10vw')
 
+    const change = () => {
+        width === '10vw'
+            ? setWidth('15vw')
+            : setWidth('10vw')
+    }
     const openMenu = () => {
         if (showMenu) return;
-        setShowMenu(true);
+        setShowMenu(true)
     };
-
     useEffect(() => {
-        if (!showMenu) return;
         const closeMenu = () => {
-            setShowMenu(false);
-        };
+            if (showMenu===false) return;
+            setShowMenu(false)
+        }
+        document.addEventListener('click', closeMenu)
 
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-        }, [showMenu]);
-
+        return () => document.removeEventListener('click', closeMenu)
+    }, [width, showMenu])
 
     return (
-        <div className='nav'>
-            {showMenu===false && (
-                <i className="fa-solid fa-bars" onClick={()=>openMenu()}></i>
-            )}
+        <div
+            className='nav'
+            style={{'width': width}}
+            onChange={change}
+        >
+            <i className="fa-solid fa-bars fa-2xl" onClick={openMenu}></i>
             {showMenu && (
                 <div id='menu'>
-                    <ul>
-                        <li>
-                            <Link to='/' end>
-                                Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='whoweare'>
-                                Who We Are
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='howtogeauxblue'>
-                                How You Can Go Blue
-                            </Link>
-                        </li>
-                    </ul>
+                    <div>
+                        <Link to='/'>
+                            Home
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to='whoweare'>
+                            Who We Are
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to='howtogeauxblue'>
+                            How You Can Go Blue
+                        </Link>
+                    </div>
                 </div>
             )}
         </div>
