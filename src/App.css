@@ -4,12 +4,12 @@
 #everything {
     background-color: #222222;
     display: grid;
-    grid-template-columns: 30vw 30vw 30vw 12.5vw;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 10vh 25vh 60vh;
     grid-template-areas:
-        'header header header nav'
-        'photos photos photos nav'
-        'main main main nav';
+        'header header header'
+        'photos photos photos'
+        'main main main';
     margin: 0;
     padding: 0
 }
@@ -18,19 +18,46 @@
     top:0;
     box-sizing: content-box;
     grid-area: header;
-    background-color: white;
+    background-color: #222222;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     height: 10vh;
-    width: 90vw;
+    width: 100vw;
     margin: 0px;
     padding: 0px;
 }
-#header > span {
-    position: absolute;
-    top: 0vh;
+li {
+    display: flex;
+
+    box-sizing: border-box;
+    flex-flow: row wrap;
+    text-decoration: none;
 }
+#header > div {
+    position: relative;
+    display: flex;
+    max-width: 45vw;
+    justify-content: center;
+}
+#header > ul {
+    display: flex;
+    justify-content: space-between;
+
+}
+#geaux,
+#nola {
+    color: black;
+    box-sizing: border-box;
+    font-size: 3rem;
+    font-weight: 600;
+}
+#blue {
+    color: blue;
+    font-weight: 800;
+    font-size: 3rem;
+}
+
 #photoScroll {
     background-color: black;
     grid-area: photos;
@@ -45,8 +72,8 @@
 #second,
 #third {
     display: flex;
-    max-width: 30vw;
-    max-height: 25vh;
+    width: 30vw;
+    height: 25vh;
 }
 #first {
     justify-content: center;
@@ -69,34 +96,47 @@
     max-height: 25vh;
 }
 .onDeck {
-    position: absolute;
+    position: inherit;
     max-width: 30vw;
     max-height: 25vh;
 }
 
 .main {
+    box-sizing: border-box;
     grid-area: main;
-    width: 90vw;
-    height: 65vh;
-    color: white;
-
+    width: 100vw;
+    height: fit-content;
+    min-height: 65vh;
+    color: #eeeeee;
+    background-color: #222222;
+    padding: 8vw 10vh;
+    display: inline;
+    white-space: wrap;
+    overflow: visible;
 }
 #nav {
     grid-area: nav;
     height: 100vh;
+    max-width: 25vw;
+    min-width: 10;
+    position: fixed;
+    right: 0;
     background-color: royalblue;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+
 }
 #menu {
     display: flex;
+    max-width: 25vw;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 #first > .active {
+
     opacity: 1;
     animation: fade-out 3s linear 2s 1 normal forwards;
 }
