@@ -6,14 +6,20 @@ const PhotoScroll = ({picArray}) => {
     const [onDecks, setOnDecks] = useState([picArray[3], picArray[4], picArray[5]])
     const [firstPic, secondPic, thirdPic] = pics
     const [onDeck1, onDeck2, onDeck3] = onDecks
-    const [outgoing, setOutgoing] = useState(false)
-    const [incoming, setIncoming] = useState(false)
+    const [outgoing1, setOutgoing1] = useState(false)
+    const [incoming1, setIncoming1] = useState(false)
+    const [outgoing2, setOutgoing2] = useState(false)
+    const [incoming2, setIncoming2] = useState(false)
+    const [outgoing3, setOutgoing3] = useState(false)
+    const [incoming3, setIncoming3] = useState(false)
+
+    const update = (setOuts, setIns) => {
+        setOuts.forEach(setOut => setOut(true))
+        setIns.forEach(setIn => setIn(true))
+    }
+
     useEffect(() => {
         let imgSrcs = picArray.map(img => img.imgSrc)
-        const update = () => {
-            setOutgoing(true)
-            setIncoming(true)
-        }
         const changePics = (pics) => {
             return pics.map(pic => {
                 let idx = imgSrcs.indexOf(pic.imgSrc);
@@ -22,26 +28,34 @@ const PhotoScroll = ({picArray}) => {
                 return picArray[idx]
             })
         }
-        if (incoming === false) {
-            setPics(changePics(pics))
-            setOnDecks(changePics(onDecks))
-            update()
+        if (incoming3 === false) {
+                setPics(changePics(pics))
+                setOnDecks(changePics(onDecks))
+                update([setOutgoing1, setOutgoing2, setOutgoing3], [setIncoming1, setIncoming2, setIncoming3])
         }
-    }, [pics, onDecks, incoming, outgoing, picArray])
+    }, [pics, onDecks, incoming3, picArray])
     return (
             <div id='photoScroll'>
                 <div id='first'>
-                    {outgoing && (<img
-                        onAnimationStart={() => setOutgoing(true)}
-                        onAnimationEnd={() => setOutgoing(false)}
+                    {outgoing1 && (<img
+                        onAnimationStart={() => {
+                            setOutgoing1(true)
+                            setOutgoing2(true)
+                            setOutgoing3(true)
+                        }}
+                        onAnimationEnd={() => setOutgoing1(false)}
                         className='active'
                         src={firstPic.imgSrc}
                         alt={firstPic.imgAlt}
                     ></img>
                     )}
-                    {incoming && (<img
-                        onAnimationStart={() => setIncoming(true)}
-                        onAnimationEnd={() => setIncoming(false)}
+                    {incoming1 && (<img
+                        onAnimationStart={() => {
+                            setIncoming1(true)
+                            setIncoming2(true)
+                            setIncoming3(true)
+                        }}
+
                         className='onDeck'
                         src={onDeck1.imgSrc}
                         alt={onDeck1.imgAlt}
@@ -49,17 +63,14 @@ const PhotoScroll = ({picArray}) => {
                     )}
                 </div>
                 <div id='second'>
-                    {outgoing && (<img
-                        onAnimationStart={() => setOutgoing(true)}
-                        onAnimationEnd={() => setOutgoing(false)}
+                    {outgoing2 && (<img
+                        onAnimationEnd={() => setOutgoing2(false)}
                         className='active'
                         src={secondPic.imgSrc}
                         alt={secondPic.imgAlt}
                     ></img>
                      )}
-                    {incoming && (<img
-                        onAnimationStart={() => setIncoming(true)}
-                        onAnimationEnd={() => setIncoming(false)}
+                    {incoming2 && (<img
                         className='onDeck'
                         src={onDeck2.imgSrc}
                         alt={onDeck2.imgAlt}
@@ -68,17 +79,19 @@ const PhotoScroll = ({picArray}) => {
                 </div>
 
                 <div id='third'>
-                    {outgoing && (<img
-                        onAnimationStart={() => setOutgoing(true)}
-                        onAnimationEnd={() => setOutgoing(false)}
+                    {outgoing3 && (<img
+                        onAnimationEnd={() => setOutgoing3(false)}
                         className='active'
                         src={thirdPic.imgSrc}
                         alt={thirdPic.imgAlt}
                     ></img>
                     )}
-                    {incoming && (<img
-                        onAnimationStart={() => setIncoming(true)}
-                        onAnimationEnd={() => setIncoming(false)}
+                    {incoming3 && (<img
+                        onAnimationEnd={() => {
+                            setIncoming1(false)
+                            setIncoming2(false)
+                            setIncoming3(false)
+                        }}
                         className='onDeck'
                         src={onDeck3.imgSrc}
                         alt={onDeck3.imgAlt}
