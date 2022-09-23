@@ -27,6 +27,10 @@
     margin: 0;
     padding: 0;
 }
+li {
+    text-decoration: none;
+    list-style: none;
+}
 ul > * > *{
     display: flex;
     box-sizing: border-box;
