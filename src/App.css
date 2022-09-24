@@ -78,6 +78,7 @@ li > *
 #photoScroll {
     background-color: black;
     grid-area: photos;
+    width: 100%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
