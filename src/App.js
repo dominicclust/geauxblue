@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Route, Routes} from 'react-router-dom';
+import history from 'history/browser'
 import HowToGeauxBlue from "./components/HowToGeauxBlue";
 import WhoWeAre from './components/WhoWeAre';
 import PhotoScroll from './components/PhotoScroll'
@@ -11,16 +12,17 @@ import './App.css'
 
 const App = () => {
   const [picArray, setPicArray] = useState(pics.pics)
+  const location = history.location
   useEffect(()=> {
-    if ((window.location.href.endsWith('howtogeauxblue') 
+    if ((location.pathname.endsWith('howtogeauxblue')
     && picArray.includes(how2pics.pics[0]))
-    || (!window.location.href.endsWith('howtogeauxblue') 
+    || (!location.pathname.endsWith('howtogeauxblue')
     && picArray.includes(pics.pics[0]))) return;
 
-    window.location.href.endsWith('howtogeauxblue')
+    location.pathname.endsWith('howtogeauxblue')
       ? setPicArray(how2pics.pics)
       : setPicArray(pics.pics)
-  }, [picArray])
+  }, [picArray, location])
   return (
     <div id='everything'>
       <Header />

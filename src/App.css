@@ -2,7 +2,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 #everything {
-    background-color: #222222;
+    background-color: inherit;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 10vh 25vh 60vh;
@@ -12,17 +12,15 @@
         'main main main';
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
 }
 #header {
-    box-sizing: content-box;
+    box-sizing: border-box;
     grid-area: header;
-    background-color: #222222;
+    background-color: #DDDDDD;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    height: 10vh;
+    align-items: center;
+    height: 15vh;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -36,8 +34,9 @@ ul > * > *{
     box-sizing: border-box;
     flex-flow: row wrap;
     text-decoration: none;
-    font-size: 1.2rem;
-    color: gold;
+    font-size: 1.3rem;
+    color: #aa8800;
+    font-weight: 700;
     padding: 1vh 2vw;
 }
 li > *:visited {
@@ -49,12 +48,10 @@ li > *
     display: flex;
     max-width: 45vw;
     justify-content: center;
-    margin-top: 1vh
-
 }
 #logo {
     height: 10vh;
-    background-color: black;
+    background-color: inherit;
 }
 #header > ul {
     display: flex;
@@ -63,11 +60,11 @@ li > *
 }
 #geaux,
 #nola {
-    color: #EEEEEE;
+    color: #222222;
     box-sizing: border-box;
     font-size: 3rem;
     font-weight: 600;
-    padding: 0vh 2vw;
+    padding: 2vh 1vw;
 }
 #blue {
     color: blue;
@@ -76,7 +73,7 @@ li > *
 }
 
 #photoScroll {
-    background-color: black;
+    background-color: #3d3daf;
     grid-area: photos;
     width: 100%;
     display: flex;
@@ -85,6 +82,7 @@ li > *
     justify-content: space-around;
     position: absolute;
     top: 15vh;
+    padding: 5vh 0;
 }
 #first,
 #second,
