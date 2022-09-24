@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import history from 'history/browser'
+import {createBrowserHistory} from 'history'
 import HowToGeauxBlue from "./components/HowToGeauxBlue";
 import WhoWeAre from './components/WhoWeAre';
 import PhotoScroll from './components/PhotoScroll'
@@ -11,6 +11,7 @@ import how2pics from './how2pics.json'
 import './App.css'
 
 const App = () => {
+  const history = createBrowserHistory()
   const [picArray, setPicArray] = useState(pics.pics)
   const location = history.location
   useEffect(()=> {
