@@ -4,7 +4,7 @@ import '../../App.css'
 const Header = () => {
     return (
         <header id='header'>
-            <img src="https://i.ibb.co/cXy4NX1/GBNOLA.png" alt='logo' id="logo"></img>
+            <img src="https://i.ibb.co/Vm7txNH/GBNo-Background.png" alt='logo' id="logo"></img>
             <div>
                 <span id='geaux'>Geaux</span>
                 <span id='blue'>Blue</span>
@@ -15,7 +15,7 @@ const Header = () => {
                 <li><Link to='whoweare'>Who We Are</Link></li>
                 <li><Link to='howtogeauxblue'>How You Can Go Blue</Link></li>
             </ul>
-            <img src="https://i.ibb.co/cXy4NX1/GBNOLA.png" alt='logo' id="logo"></img>
+            <img src="https://i.ibb.co/Vm7txNH/GBNo-Background.png" alt='logo' id="logo"></img>
         </header>
     )
 }
