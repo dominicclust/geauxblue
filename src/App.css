@@ -4,12 +4,13 @@
 #everything {
     background-color: inherit;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 10vh 25vh 60vh;
+    grid-template-columns: 1fr 1fr 1fr 20vw;
+    grid-template-rows: 10vh 25vh 65vh;
     grid-template-areas:
-        'header header header'
-        'photos photos photos'
-        'main main main';
+        'header header header nav'
+        'photos photos photos nav'
+        'main main main nav';
+    gap: 0;
     margin: 0;
     padding: 0;
 }
@@ -21,28 +22,26 @@
     justify-content: space-between;
     align-items: center;
     height: 15vh;
-    width: 100%;
+    width: 83vw;
     margin: 0;
     padding: 0;
 }
 li {
     text-decoration: none;
-    list-style: none;
-}
-ul > * > *{
     display: flex;
-    box-sizing: border-box;
-    flex-flow: row wrap;
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #aa8800;
-    font-weight: 700;
-    padding: 1vh 2vw;
+
+    list-style: none;
 }
 li > *:visited {
     text-decoration: none;
 }
-li > *
+li > * {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2vh 0;
+    color: #dda900;
+    border-top: 1px solid black;
+}
 #header > div {
     position: relative;
     display: flex;
@@ -70,26 +69,27 @@ li > *
     color: blue;
     font-weight: 800;
     font-size: 3rem;
+    padding: 2vh 1vw;
 }
 
 #photoScroll {
     background-color: #3d3daf;
     grid-area: photos;
-    width: 100%;
+    width: 83vw;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     justify-content: space-around;
     position: absolute;
     top: 15vh;
-    padding: 5vh 0;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
 }
 #first,
 #second,
 #third {
     display: flex;
-    width: 30vw;
-    height: 25vh;
+    max-height: 25vh;
 }
 #first {
     justify-content: center;
@@ -105,33 +105,34 @@ li > *
 }
 .active {
     position: absolute;
-    max-width: 30vw;
-    max-height: 25vh;
+    max-width: 28vw;
+    max-height: 23vh;
 }
 .onDeck {
     position: inherit;
-    max-width: 30vw;
-    max-height: 25vh;
+    max-width: 28vw;
+    max-height: 23vh;
 }
 
 .main {
     box-sizing: border-box;
     grid-area: main;
-    width: 100vw;
+    width: 85vw;
     height: fit-content;
     min-height: 65vh;
     color: #eeeeee;
     background-color: #222222;
     padding: 8vw 10vh;
-    display: inline;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
     white-space: wrap;
     overflow: visible;
 }
 #nav {
     grid-area: nav;
     height: 100vh;
-    max-width: 25vw;
-    min-width: 10;
+    width: 15vw;
     position: fixed;
     right: 0;
     background-color: royalblue;
@@ -140,10 +141,14 @@ li > *
     align-items: center;
     padding-top: 20px;
 
+}   
+.main > * {
+    max-width: 70vw;
+
 }
 #menu {
     display: flex;
-    max-width: 25vw;
+    max-width: 15vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;

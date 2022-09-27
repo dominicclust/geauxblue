@@ -1,31 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import '../../App.css'
 
-const Navigation = ({showMenu, openMenu}) => {
-    const [width, setWidth] = useState('15vw')
-    useEffect(() => {
-        const handleMenuVisibility = (w) => {
-            if ((showMenu && width === '25vw')
-            || (showMenu===false && width === '15vw')) return;
-            setWidth(w)
-        }
-        handleMenuVisibility('25vw')
-        return () => handleMenuVisibility('15vw')    
-
-    }, [width, showMenu])
+const Navigation = ({handleClick}) => {
+    
     return (
-        <nav className='nav' id='nav' style={{'width': {width}}}>
-            <div onClick={openMenu}>
-                <i className="fa-solid fa-bars fa-2xl" ></i>
-            </div>
-            {!!showMenu && (<ul 
-                id='menu'
-            >
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='whoweare'>Who We Are</Link></li>
+        <nav className='nav' id='nav'>
+            <ul id='menu'>
+                <li onClick={() => handleClick}><Link to='/'>Home</Link></li>
+                <li onClick={() => handleClick}><Link to='whoweare'>Who We Are</Link></li>
                 <li><Link to='howtogeauxblue'>How You Can Go Blue</Link></li>
-            </ul>)}
+                <li><Link to='press'>Press Release</Link></li>
+            </ul>
         </nav>
     )
 }
