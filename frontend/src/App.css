@@ -1,0 +1,191 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#everything {
+    background-color: inherit;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 10vh 25vh 60vh;
+    grid-template-areas:
+        'header header header'
+        'photos photos photos'
+        'main main main';
+    margin: 0;
+    padding: 0;
+}
+#header {
+    box-sizing: border-box;
+    grid-area: header;
+    background-color: #DDDDDD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+li {
+    text-decoration: none;
+    list-style: none;
+}
+ul > * > *{
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: row wrap;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #aa8800;
+    font-weight: 700;
+    padding: 1vh 2vw;
+}
+li > *:visited {
+    text-decoration: none;
+}
+li > *
+#header > div {
+    position: relative;
+    display: flex;
+    max-width: 45vw;
+    justify-content: center;
+}
+#logo {
+    height: 10vh;
+    background-color: inherit;
+}
+#header > ul {
+    display: flex;
+    justify-content: space-between;
+
+}
+#geaux,
+#nola {
+    color: #222222;
+    box-sizing: border-box;
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 2vh 1vw;
+}
+#blue {
+    color: blue;
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+#photoScroll {
+    background-color: #3d3daf;
+    grid-area: photos;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: space-around;
+    position: absolute;
+    top: 15vh;
+    padding: 5vh 0;
+}
+#first,
+#second,
+#third {
+    display: flex;
+    width: 30vw;
+    height: 25vh;
+}
+#first {
+    justify-content: center;
+    align-items: flex-end;
+}
+#second {
+    justify-content: center;
+    align-items: center;
+}
+#third {
+    justify-content: center;
+    align-items: flex-start;
+}
+.active {
+    position: absolute;
+    max-width: 30vw;
+    max-height: 25vh;
+}
+.onDeck {
+    position: inherit;
+    max-width: 30vw;
+    max-height: 25vh;
+}
+
+.main {
+    box-sizing: border-box;
+    grid-area: main;
+    width: 100vw;
+    height: fit-content;
+    min-height: 65vh;
+    color: #eeeeee;
+    background-color: #222222;
+    padding: 8vw 10vh;
+    display: inline;
+    white-space: wrap;
+    overflow: visible;
+}
+#nav {
+    grid-area: nav;
+    height: 100vh;
+    max-width: 25vw;
+    min-width: 10;
+    position: fixed;
+    right: 0;
+    background-color: royalblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+}
+#menu {
+    display: flex;
+    max-width: 25vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#first > .active {
+
+    opacity: 1;
+    animation: fade-out 5s linear 0s 1 normal forwards;
+}
+#first > .onDeck {
+    opacity: 0;
+    animation: fade-in 5s linear 0s 1 normal forwards;
+}
+#second > .active {
+    opacity: 1;
+    animation: fade-out 5s linear 2s 1 normal forwards;
+}
+#second > .onDeck {
+    opacity: 0;
+    animation: fade-in 5s linear 2s 1 normal forwards;
+}
+#third > .active {
+    opacity: 1;
+    animation: fade-out 5s linear 4s 1 normal forwards;
+}
+#third > .onDeck {
+    opacity: 0;
+    animation: fade-in 5s linear 4s 1 normal forwards;
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
